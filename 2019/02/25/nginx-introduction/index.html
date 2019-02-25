@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="柳杉的博客">
 <meta property="og:description" content="Nginx是一个快速且强大的http和反向代理服务器，能够快捷方便地提供服务。 像许多其他系统工具一样，只有很少的文档和教程来解释它如何开始工作。 初始设置假设你运行的系统是ubuntu，如下是安装nginx的命令 1apt-get install nginx 用浏览器访问你服务器的IP地址，你会看见“welcome to nginx”页面 找到nginx所有nginx的config文件都在/et">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-25T08:38:21.813Z">
+<meta property="og:updated_time" content="2019-02-25T08:45:10.775Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面向开发者的Nginx初级教程">
 <meta name="twitter:description" content="Nginx是一个快速且强大的http和反向代理服务器，能够快捷方便地提供服务。 像许多其他系统工具一样，只有很少的文档和教程来解释它如何开始工作。 初始设置假设你运行的系统是ubuntu，如下是安装nginx的命令 1apt-get install nginx 用浏览器访问你服务器的IP地址，你会看见“welcome to nginx”页面 找到nginx所有nginx的config文件都在/et">
@@ -137,7 +137,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7 minutes read (About 998 words)
+                    7 minutes read (About 1000 words)
                 </span>
                 
                 
@@ -175,7 +175,7 @@
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name wangben.site;</span><br><span class="line">    root /var/www/example;</span><br><span class="line">    </span><br><span class="line">    location / &#123;</span><br><span class="line">        try_files $uri $uri/ /index.html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h3><p>运行如下命令让nginx重新载入</p>
 <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service nginx reload</span><br></pre></td></tr></table></figure>
-<p>在浏览器输入地址访问服务器，成功！</p>
+<p>然后就可以在浏览器输入地址访问服务器啦</p>
 <h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://carrot.is/coding/nginx_introduction" target="_blank" rel="noopener">英文完整版</a></p>
 
         </div>
