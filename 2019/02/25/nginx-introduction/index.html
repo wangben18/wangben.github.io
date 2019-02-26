@@ -7,23 +7,24 @@
 
 
 
-    <meta name="description" content="Nginx是一个快速且强大的http和反向代理服务器，能够快捷方便地提供服务。 像许多其他系统工具一样，只有很少的文档和教程来解释它如何开始工作。 初始设置假设你运行的系统是ubuntu，如下是安装nginx的命令 1apt-get install nginx 用浏览器访问你服务器的IP地址，你会看见“welcome to nginx”页面 找到nginx所有nginx的config文件都在/et">
+    <meta name="description" content="Nginx是一个快速且强大的http和反向代理服务器，能够快捷方便地提供服务 安装假设运行的系统是Ubuntu，在terminal输入如下命令安装nginx 1apt-get install nginx 此时用浏览器访问你服务器的IP地址，你将会看见“welcome to nginx”页面 nginx的位置所有nginx的配置文件都在/etc/nginx目录下，cd到这个目录。本次教程要添加的配置">
+<meta name="keywords" content="nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面向开发者的Nginx初级教程">
 <meta property="og:url" content="http://blog.wangben.site/2019/02/25/nginx-introduction/index.html">
 <meta property="og:site_name" content="柳杉的博客">
-<meta property="og:description" content="Nginx是一个快速且强大的http和反向代理服务器，能够快捷方便地提供服务。 像许多其他系统工具一样，只有很少的文档和教程来解释它如何开始工作。 初始设置假设你运行的系统是ubuntu，如下是安装nginx的命令 1apt-get install nginx 用浏览器访问你服务器的IP地址，你会看见“welcome to nginx”页面 找到nginx所有nginx的config文件都在/et">
+<meta property="og:description" content="Nginx是一个快速且强大的http和反向代理服务器，能够快捷方便地提供服务 安装假设运行的系统是Ubuntu，在terminal输入如下命令安装nginx 1apt-get install nginx 此时用浏览器访问你服务器的IP地址，你将会看见“welcome to nginx”页面 nginx的位置所有nginx的配置文件都在/etc/nginx目录下，cd到这个目录。本次教程要添加的配置">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-25T08:45:10.775Z">
+<meta property="og:updated_time" content="2019-02-26T07:04:45.447Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面向开发者的Nginx初级教程">
-<meta name="twitter:description" content="Nginx是一个快速且强大的http和反向代理服务器，能够快捷方便地提供服务。 像许多其他系统工具一样，只有很少的文档和教程来解释它如何开始工作。 初始设置假设你运行的系统是ubuntu，如下是安装nginx的命令 1apt-get install nginx 用浏览器访问你服务器的IP地址，你会看见“welcome to nginx”页面 找到nginx所有nginx的config文件都在/et">
+<meta name="twitter:description" content="Nginx是一个快速且强大的http和反向代理服务器，能够快捷方便地提供服务 安装假设运行的系统是Ubuntu，在terminal输入如下命令安装nginx 1apt-get install nginx 此时用浏览器访问你服务器的IP地址，你将会看见“welcome to nginx”页面 nginx的位置所有nginx的配置文件都在/etc/nginx目录下，cd到这个目录。本次教程要添加的配置">
 
 
 
 
 
-<link rel="icon" href="/images/avatar.jpg">
+<link rel="icon" href="/images/favicon.svg">
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
@@ -135,7 +136,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7 minutes read (About 1000 words)
+                    6 minutes read (About 962 words)
                 </span>
                 
                 
@@ -148,24 +149,23 @@
             
         </h1>
         <div class="content">
-            <p>Nginx是一个快速且强大的http和反向代理服务器，能够快捷方便地提供服务。</p>
-<p>像许多其他系统工具一样，只有很少的文档和教程来解释它如何开始工作。</p>
-<h3 id="初始设置"><a href="#初始设置" class="headerlink" title="初始设置"></a>初始设置</h3><p>假设你运行的系统是ubuntu，如下是安装nginx的命令</p>
+            <p>Nginx是一个快速且强大的http和反向代理服务器，能够快捷方便地提供服务</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>假设运行的系统是Ubuntu，在terminal输入如下命令安装nginx</p>
 <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install nginx</span><br></pre></td></tr></table></figure>
-<p>用浏览器访问你服务器的IP地址，你会看见“welcome to nginx”页面</p>
-<h3 id="找到nginx"><a href="#找到nginx" class="headerlink" title="找到nginx"></a>找到nginx</h3><p>所有nginx的config文件都在<strong>/etc/nginx</strong>目录下，现在cd到这个目录。本次教程要添加的config文件会放在其中一个名为<strong>sites-enabled</strong>目录下，继续cd到该目录里，你会发现有个default文件在里面，就是这个文件使你看见“welcome to nginx”。使用touch新建一个名为<strong>test</strong>的文件在该目录下并用你喜欢的编辑器打开。</p>
-<h3 id="一个静态服务器的设置"><a href="#一个静态服务器的设置" class="headerlink" title="一个静态服务器的设置"></a>一个静态服务器的设置</h3><p>Nginx的config文件有它自己的一套非常简单的语法规则，与css的类似。如下是一个名为<strong>server</strong>的一级命名空间</p>
+<p>此时用浏览器访问你服务器的IP地址，你将会看见“welcome to nginx”页面</p>
+<h3 id="nginx的位置"><a href="#nginx的位置" class="headerlink" title="nginx的位置"></a>nginx的位置</h3><p>所有nginx的配置文件都在<strong>/etc/nginx</strong>目录下，cd到这个目录。本次教程要添加的配置文件会放在其中一个名为<strong>sites-enabled</strong>目录下，cd到该目录里，你会发现有个default文件在里面，就是这个文件使你看见“welcome to nginx”。touch一个<strong>test</strong>在该目录下并用你喜欢的编辑器打开</p>
+<h3 id="设置静态服务器"><a href="#设置静态服务器" class="headerlink" title="设置静态服务器"></a>设置静态服务器</h3><p>Nginx的config文件有它自己的一套与css的类似的语法规则。如下是一个名为<strong>server</strong>的一级命名空间</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在这个命名空间内部，可以像css那样添加以分号结尾的键值对，也可以再添加一块子命名空间</p>
-<p>键值对（key-value pairs）也称为指令（directives），可以用的命令有许多种，本教程只用到其中一小部分，每个命令我都加了一个指向该命令文档的链接，想要了解更多就看文档吧，毕竟文档是唯一的官方了解途径。如果你想要更加复杂高级的设置，也肯定要看文档。</p>
+<p>键值对（key-value pairs）也称为指令（directives），命令有很多很多，本教程只用到其中一小部分，下面每个命令都加了一个指向该命令文档的链接，想要了解更多就看文档吧，文档是唯一的官方了解途径。如果你想要更加复杂高级的设置，也免不了要看文档。</p>
 <p><a href="https://wiki.nginx.org/HttpCoreModule#listen" target="_blank" rel="noopener">listen</a>指令用来设置服务器监听的端口号，默认为80</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>由于80是默认值，你可以不用写该指令。但为了表示清楚，写上也是极好的</p>
+<p>由于80是默认值，可以不用写该指令，但为了表示清楚，写上也是极好的</p>
 <p><a href="https://wiki.nginx.org/HttpCoreModule#server_name" target="_blank" rel="noopener">server_name</a>指令用来匹配url。如果你的站点在<a href="https://wangben.site,那根server_name就是wangben.site。如果还有一个在https://abc.com，可以再添加一个abc.com的server_name，各自的请求就会匹配到各自的站点里。" target="_blank" rel="noopener">https://wangben.site,那根server_name就是wangben.site。如果还有一个在https://abc.com，可以再添加一个abc.com的server_name，各自的请求就会匹配到各自的站点里。</a></p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name wangben.site;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><a href="https://wiki.nginx.org/HttpCoreModule#root" target="_blank" rel="noopener">root</a>指令是设置静态网页的关键。如果你只是想要发布一些html和css文件，root指令描述了这些文件的存放位置。假设把这些文件都放到<strong>/var/www</strong>目录下，用mkdir创建目录<strong>/var/www/example</strong>，在此目录下，touch index.html，编辑该文件，放个hello world或者其他你想放的东西，保存。回到刚才的设置文件，添加root指令</p>
+<p><a href="https://wiki.nginx.org/HttpCoreModule#root" target="_blank" rel="noopener">root</a>指令是设置静态网页的关键组成部分。如果你只是想要发布一些html和css文件，root指令描述了这些文件的存放位置。现在，mkdir <strong>/var/www/example</strong>（也可以是你想要的任意位置），在此目录下，touch index.html，编辑该文件，存入一些类似hello world的文字，保存。回到刚才的配置文件，添加root指令</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name wangben.site;</span><br><span class="line">    root /var/www/example;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><a href="https://wiki.nginx.org/HttpCoreModule#location" target="_blank" rel="noopener">location</a>指令有两个参数：字符串或正则 和一个块。如果你想要给<strong>wangben.site/whatever</strong>指定页面，就用’whatever’作为uri。在这里，我们要匹配的是根目录，所以使用 <strong>/</strong> 作为uri</p>
+<p><a href="https://wiki.nginx.org/HttpCoreModule#location" target="_blank" rel="noopener">location</a>指令有两个参数：1.字符串或正则 2.一个block（即命名空间namespace）。如果你想要给<strong>wangben.site/whatever</strong>指定页面，就用’whatever’作为uri。在这里，我们要匹配的是根目录，所以使用 <strong>/</strong> 作为uri</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name wangben.site;</span><br><span class="line">    root /var/www/example;</span><br><span class="line">    </span><br><span class="line">    location / &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>“<strong>/</strong>” 会匹配所有url，因为它被看成是一个正则。如果你想要单独匹配字符串，就加个等号</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location = / &#123; ... &#125;</span><br></pre></td></tr></table></figure>
@@ -174,8 +174,18 @@
 <h3 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h3><p>运行如下命令让nginx重新载入</p>
 <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service nginx reload</span><br></pre></td></tr></table></figure>
 <p>然后就可以在浏览器输入地址访问服务器啦</p>
-<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://carrot.is/coding/nginx_introduction" target="_blank" rel="noopener">英文完整版</a></p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>以上就是本教程的全部内容啦</p>
+<p><a href="https://carrot.is/coding/nginx_introduction" target="_blank" rel="noopener">英文完整版</a></p>
 
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/nginx/">nginx</a>
+                </div>
+            </div>
         </div>
         
         
@@ -277,10 +287,10 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Tag
                     </p>
                     <p class="title has-text-weight-normal">
-                        0
+                        1
                     </p>
                 </div>
             </div>
@@ -315,6 +325,15 @@
 </div>
     
         
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/nginx/" style="font-size: 10px;">nginx</a>
+    </div>
+</div>
+
     
     
         <div class="column-right-shadow is-hidden-widescreen ">
@@ -380,6 +399,13 @@
                 Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nginx/">
+                        <span class="tag">nginx</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
             </div>
         </div>
@@ -458,6 +484,13 @@
                 Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nginx/">
+                        <span class="tag">nginx</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
             </div>
         </div>
