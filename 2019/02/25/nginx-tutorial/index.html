@@ -140,7 +140,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 minutes read (About 947 words)
+                    6 minutes read (About 945 words)
                 </span>
                 
                 
@@ -159,7 +159,7 @@
 <p>此时用浏览器访问你服务器的IP地址，你将会看见“welcome to nginx”页面</p>
 <h3 id="nginx的位置"><a href="#nginx的位置" class="headerlink" title="nginx的位置"></a>nginx的位置</h3><p>所有nginx的配置文件都在<strong>/etc/nginx</strong>目录下，cd到这个目录。本次教程要添加的配置文件会放在其中一个名为<strong>sites-enabled</strong>目录下，cd到该目录里，你会发现有个default文件在里面，就是这个文件使你看见“welcome to nginx”。touch一个<strong>test</strong>在该目录下并用你喜欢的编辑器打开</p>
 <h3 id="设置静态服务器"><a href="#设置静态服务器" class="headerlink" title="设置静态服务器"></a>设置静态服务器</h3><p>Nginx的config文件有它自己的一套与css的类似的语法规则。如下是一个名为<strong>server</strong>的一级命名空间</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在这个命名空间内部，可以像css那样添加以分号结尾的键值对，也可以再添加一块子命名空间</p>
 <p>键值对（key-value pairs）也称为指令（directives），命令有很多很多，本教程只用到其中一小部分，下面每个命令都加了一个指向该命令文档的链接，想要了解更多就看文档吧，文档是唯一的官方了解途径。如果你想要更加复杂高级的设置，也免不了要看文档。</p>
 <p><a href="https://wiki.nginx.org/HttpCoreModule#listen" target="_blank" rel="noopener">listen</a>指令用来设置服务器监听的端口号，默认为80</p>
@@ -170,15 +170,15 @@
 <p><a href="https://wiki.nginx.org/HttpCoreModule#root" target="_blank" rel="noopener">root</a>指令是设置静态网页的关键组成部分。如果你只是想要发布一些html和css文件，root指令描述了这些文件的存放位置。现在，创建目录 <strong>/var/www/example</strong>（也可以是其他任意位置），在此目录下，touch index.html，编辑该文件，存入一些类似hello world的文字，保存。回到刚才的配置文件，添加root指令</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name wangben.site;</span><br><span class="line">    root /var/www/example;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><a href="https://wiki.nginx.org/HttpCoreModule#location" target="_blank" rel="noopener">location</a>指令有两个参数：1.字符串或正则 2.一个block（即命名空间namespace）。如果你想要给 <strong>wangben.site/whatever</strong> 指定页面，就用’whatever’作为uri。在这里，我们要匹配的是根目录，所以使用 <strong>/</strong> 作为uri</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name wangben.site;</span><br><span class="line">    root /var/www/example;</span><br><span class="line">    </span><br><span class="line">    location / &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name wangben.site;</span><br><span class="line">    root /var/www/example;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>“<strong>/</strong>” 会匹配所有url，因为它被看成是一个正则。如果你想要单独匹配字符串，就加个等号</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location = / &#123; ... &#125;</span><br></pre></td></tr></table></figure>
 <p><a href="https://wiki.nginx.org/HttpCoreModule#try_files" target="_blank" rel="noopener">try_files</a>指令根据文件名列表或模式在root指定的目录下寻找匹配的文件，在这里我们要做的很简单，匹配任何斜杠之后的字符，例如’whatever.html’，要是斜杠后没有任何字符，则匹配<strong>index.html</strong>。</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name wangben.site;</span><br><span class="line">    root /var/www/example;</span><br><span class="line">    </span><br><span class="line">    location / &#123;</span><br><span class="line">        try_files $uri $uri/ /index.html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name wangben.site;</span><br><span class="line">    root /var/www/example;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        try_files $uri $uri/ /index.html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h3><p>运行如下命令让nginx重新载入</p>
 <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service nginx reload</span><br></pre></td></tr></table></figure>
 <p>然后就可以在浏览器输入地址访问服务器啦</p>
-<p><a href="https://carrot.is/coding/nginx_introduction" target="_blank" rel="noopener">英文版</a></p>
+<p><a href="https://carrot.is/coding/nginx_introduction" target="_blank" rel="noopener">English</a></p>
 
         </div>
         
@@ -500,7 +500,7 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2019 Wang Ben&nbsp;
+                &copy; 2019 柳杉&nbsp;
                 Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 
                 </p>
