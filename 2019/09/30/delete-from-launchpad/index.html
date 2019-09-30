@@ -7,17 +7,17 @@
 
 
 
-    <meta name="description" content="应用删除后图标还在启动台？打开终端！  找到 Launchpad 数据路径12$ find 2&amp;gt;/dev/null /private/var/folders -name com.apple.dock.launchpadoutput: /private/var/folders/**/com.apple.dock.launchpad    进入子目录db 1$ cd /private/var/f">
+    <meta name="description" content="应用删除后图标还在启动台？打开终端！  找到 Launchpad 数据路径1$ find 2&amp;gt;/dev/null /private/var/folders -name com.apple.dock.launchpad   output: /private/var/folders/**/com.apple.dock.launchpad  进入子目录db 1$ cd /private/var/f">
 <meta property="og:type" content="article">
 <meta property="og:title" content="删除启动台 (Launchpad) 中无法去除的图标">
 <meta property="og:url" content="http://blog.wangben.site/2019/09/30/delete-from-launchpad/index.html">
 <meta property="og:site_name" content="柳杉的博客">
-<meta property="og:description" content="应用删除后图标还在启动台？打开终端！  找到 Launchpad 数据路径12$ find 2&amp;gt;/dev/null /private/var/folders -name com.apple.dock.launchpadoutput: /private/var/folders/**/com.apple.dock.launchpad    进入子目录db 1$ cd /private/var/f">
+<meta property="og:description" content="应用删除后图标还在启动台？打开终端！  找到 Launchpad 数据路径1$ find 2&amp;gt;/dev/null /private/var/folders -name com.apple.dock.launchpad   output: /private/var/folders/**/com.apple.dock.launchpad  进入子目录db 1$ cd /private/var/f">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-30T15:43:37.776Z">
+<meta property="og:updated_time" content="2019-09-30T15:46:56.723Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="删除启动台 (Launchpad) 中无法去除的图标">
-<meta name="twitter:description" content="应用删除后图标还在启动台？打开终端！  找到 Launchpad 数据路径12$ find 2&amp;gt;/dev/null /private/var/folders -name com.apple.dock.launchpadoutput: /private/var/folders/**/com.apple.dock.launchpad    进入子目录db 1$ cd /private/var/f">
+<meta name="twitter:description" content="应用删除后图标还在启动台？打开终端！  找到 Launchpad 数据路径1$ find 2&amp;gt;/dev/null /private/var/folders -name com.apple.dock.launchpad   output: /private/var/folders/**/com.apple.dock.launchpad  进入子目录db 1$ cd /private/var/f">
 
 
 
@@ -150,9 +150,10 @@
         <div class="content">
             <p>应用删除后图标还在启动台？打开终端！</p>
 <ol>
-<li>找到 Launchpad 数据路径<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ find 2&gt;/dev/null /private/var/folders -name com.apple.dock.launchpad</span><br><span class="line">output: /private/var/folders/**/com.apple.dock.launchpad</span><br></pre></td></tr></table></figure>
+<li>找到 Launchpad 数据路径<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ find 2&gt;/dev/null /private/var/folders -name com.apple.dock.launchpad</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+<p>output: /private/var/folders/**/com.apple.dock.launchpad</p>
 <ul>
 <li><p>进入子目录db</p>
 <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="hljs-built_in">cd</span> /private/var/folders/**/com.apple.dock.launchpad/db</span><br></pre></td></tr></table></figure>
