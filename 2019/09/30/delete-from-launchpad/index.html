@@ -2,19 +2,22 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Tags - 柳杉的博客</title>
+<title>柳杉的博客</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="keywords" content="nginx,tutorial">
-<meta property="og:type" content="website">
+    <meta name="description" content="删除启动台 (Launchpad) 中无法去除的图标应用删除后图标还在启动台？打开终端！  找到 Launchpad 数据路径12$ find 2&amp;gt;/dev/null /private/var/folders -name com.apple.dock.launchpadoutput: /private/var/folders/**/com.apple.dock.launchpad    进入">
+<meta property="og:type" content="article">
 <meta property="og:title" content="柳杉的博客">
-<meta property="og:url" content="http://blog.wangben.site/tags/index.html">
+<meta property="og:url" content="http://blog.wangben.site/2019/09/30/delete-from-launchpad/index.html">
 <meta property="og:site_name" content="柳杉的博客">
+<meta property="og:description" content="删除启动台 (Launchpad) 中无法去除的图标应用删除后图标还在启动台？打开终端！  找到 Launchpad 数据路径12$ find 2&amp;gt;/dev/null /private/var/folders -name com.apple.dock.launchpadoutput: /private/var/folders/**/com.apple.dock.launchpad    进入">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-30T15:40:11.539Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="柳杉的博客">
+<meta name="twitter:description" content="删除启动台 (Launchpad) 中无法去除的图标应用删除后图标还在启动台？打开终端！  找到 Launchpad 数据路径12$ find 2&amp;gt;/dev/null /private/var/folders -name com.apple.dock.launchpadoutput: /private/var/folders/**/com.apple.dock.launchpad    进入">
 
 
 
@@ -86,7 +89,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="柳杉的博客" height="28">
+                <img src="/images/logo.svg" alt height="28">
             
             </a>
         </div>
@@ -100,7 +103,7 @@
                 
                 <a class="navbar-item" href="/categories">Categories</a>
                 
-                <a class="navbar-item is-active" href="/tags">Tags</a>
+                <a class="navbar-item" href="/tags">Tags</a>
                 
             </div>
             
@@ -120,32 +123,101 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Tags
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-09-30T15:38:45.367Z">2019-09-30</time>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/nginx/">
-                        <span class="tag">nginx</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/tutorial/">
-                        <span class="tag">tutorial</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a minute read (About 121 words)
+                </span>
+                
                 
             </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                
+            
+        </h1>
+        <div class="content">
+            <h2 id="删除启动台-Launchpad-中无法去除的图标"><a href="#删除启动台-Launchpad-中无法去除的图标" class="headerlink" title="删除启动台 (Launchpad) 中无法去除的图标"></a>删除启动台 (Launchpad) 中无法去除的图标</h2><p>应用删除后图标还在启动台？打开终端！</p>
+<ol>
+<li>找到 Launchpad 数据路径<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ find 2&gt;/dev/null /private/var/folders -name com.apple.dock.launchpad</span><br><span class="line">output: /private/var/folders/**/com.apple.dock.launchpad</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li><p>进入子目录db</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="hljs-built_in">cd</span> /private/var/folders/**/com.apple.dock.launchpad/db</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从Launchpad的数据库中删除图标，将@@@替换为依然存在的应用名称（区分大小写），重启Dock</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sqlite3 db <span class="hljs-string">"delete from apps where title='@@@';"</span>&amp;&amp;killall Dock</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+        </div>
+        
+        
+        
     </div>
-</div></div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/alipay-qrcode.JPG" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/wechat-qrcode.jpg" alt="Wechat"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/02/25/nginx-tutorial/">
+                <span class="level-item">面向开发者的Nginx初级教程</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
                 
 
 
@@ -517,7 +589,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="柳杉的博客" height="28">
+                    <img src="/images/logo.svg" alt height="28">
                 
                 </a>
                 <p class="is-size-7">
